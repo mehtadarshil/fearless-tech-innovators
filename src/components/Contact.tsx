@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "sonner";
-import { WhatsappIcon } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -94,7 +94,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
               >
-                <WhatsappIcon className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5" />
                 Chat on WhatsApp
               </a>
             </div>
