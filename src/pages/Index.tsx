@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
@@ -11,6 +12,9 @@ const Index = () => {
       </div>
       <div id="services">
         <Services />
+      </div>
+      <div id="contact">
+        <Contact />
       </div>
     </div>
   );

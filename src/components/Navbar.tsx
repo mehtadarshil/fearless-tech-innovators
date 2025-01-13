@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
@@ -8,7 +7,6 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", id: "home" },
     { name: "Services", id: "services" },
-    { name: "About", id: "about" },
     { name: "Contact", id: "contact" },
   ];
 
