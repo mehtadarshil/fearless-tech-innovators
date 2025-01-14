@@ -7,6 +7,7 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", id: "home" },
     { name: "Services", id: "services" },
+    { name: "Impact", id: "impact" },
     { name: "Contact", id: "contact" },
   ];
 
@@ -19,10 +20,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-pointer">
+          <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-pointer hover:scale-105 transition-transform">
             <span className="text-xl font-bold text-primary">TechNoFear</span>
           </div>
 
@@ -32,14 +33,14 @@ const Navbar = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors hover:scale-105 transform"
               >
                 {item.name}
               </button>
             ))}
             <button
               onClick={() => scrollToSection("contact")}
-              className="px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+              className="px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all hover:scale-105 transform"
             >
               Get Started
             </button>
@@ -58,7 +59,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden animate-fade-in">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
                 <button

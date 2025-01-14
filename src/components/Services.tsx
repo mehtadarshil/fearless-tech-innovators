@@ -43,8 +43,8 @@ const Services = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Services</h2>
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gradient">Our Services</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Comprehensive IT solutions designed to transform your business and drive
             growth through innovation.
@@ -55,12 +55,12 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card p-6 rounded-xl hover-lift"
+              className="glass-card p-6 rounded-xl hover:scale-105 transition-all duration-300 animate-fade-up"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
-              <service.icon className="w-10 h-10 text-primary mb-4" />
+              <service.icon className="w-10 h-10 text-primary mb-4 animate-pulse" />
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-muted-foreground">{service.description}</p>
             </div>

@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
+import Impact from "@/components/Impact";
 
 const Index = () => {
   return (
@@ -12,6 +13,9 @@ const Index = () => {
       </div>
       <div id="services">
         <Services />
+      </div>
+      <div id="impact">
+        <Impact />
       </div>
       <div id="contact">
         <Contact />
