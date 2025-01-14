@@ -5,30 +5,12 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { MessageSquare } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { useQuery } from "@tanstack/react-query";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  });
-
-  const { data: statistics } = useQuery({
-    queryKey: ["statistics"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("statistics")
-        .select("*")
-        .single();
-      
-      if (error) {
-        console.error("Error fetching statistics:", error);
-        throw error;
-      }
-      
-      return data;
-    },
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,8 +35,9 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-animated bg-[size:400%_400%] animate-gradient opacity-30" />
+      <div className="max-w-6xl mx-auto relative">
         <div className="text-center mb-12 animate-fade-up">
           <h2 className="text-4xl font-bold mb-4">
             Let's Start Your Tech Journey Together
@@ -134,34 +117,6 @@ const Contact = () => {
                   <MessageSquare className="w-5 h-5" />
                   Chat on WhatsApp
                 </a>
-              </div>
-            </div>
-
-            <div className="glass-card p-6 rounded-lg animate-fade-up">
-              <h3 className="text-xl font-semibold mb-6">Our Impact</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">
-                    {statistics?.satisfied_clients || 0}+
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Satisfied Clients
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">
-                    {statistics?.completed_projects || 0}+
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Projects Completed
-                  </p>
-                </div>
-                <div className="text-center col-span-2">
-                  <p className="text-3xl font-bold text-primary">24/7</p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Support Available
-                  </p>
-                </div>
               </div>
             </div>
           </div>

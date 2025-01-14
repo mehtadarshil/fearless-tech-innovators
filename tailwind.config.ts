@@ -73,10 +73,25 @@ export default {
             opacity: "1",
           },
         },
+        "gradient-animation": {
+          "0%": {
+            backgroundPosition: "0% 50%",
+          },
+          "50%": {
+            backgroundPosition: "100% 50%",
+          },
+          "100%": {
+            backgroundPosition: "0% 50%",
+          },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
+        "gradient": "gradient-animation 15s ease infinite",
+      },
+      backgroundImage: {
+        "gradient-animated": "linear-gradient(-45deg, #000000 0%, #cfb673 50%, #000000 100%)",
       },
     },
   },
