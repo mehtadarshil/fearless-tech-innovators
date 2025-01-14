@@ -4,6 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "sonner";
 import { MessageSquare } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,11 +14,42 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { data: statistics } = useQuery({
+    queryKey: ["statistics"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("statistics")
+        .select("*")
+        .single();
+      
+      if (error) {
+        console.error("Error fetching statistics:", error);
+        throw error;
+      }
+      
+      return data;
+    },
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast.success("Message sent successfully!");
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const { error } = await supabase.from("contact_messages").insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      ]);
+
+      if (error) throw error;
+
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -42,6 +75,7 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
+                  required
                 />
               </div>
               <div>
@@ -52,6 +86,7 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
+                  required
                 />
               </div>
               <div>
@@ -62,6 +97,7 @@ const Contact = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   className="min-h-[120px]"
+                  required
                 />
               </div>
               <Button type="submit" className="w-full">
@@ -70,33 +106,63 @@ const Contact = () => {
             </form>
           </div>
 
-          <div className="glass-card p-6 rounded-lg space-y-6 animate-fade-up">
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Contact Details</h3>
-              <div className="space-y-4">
-                <p>
-                  <span className="text-primary">Company:</span> TechNoFear
-                </p>
-                <p>
-                  <span className="text-primary">Email:</span>{" "}
-                  technofear4@gmail.com
-                </p>
-                <p>
-                  <span className="text-primary">Phone:</span> +91 9512918210
-                </p>
+          <div className="space-y-8">
+            <div className="glass-card p-6 rounded-lg space-y-6 animate-fade-up">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Contact Details</h3>
+                <div className="space-y-4">
+                  <p>
+                    <span className="text-primary">Company:</span> TechNoFear
+                  </p>
+                  <p>
+                    <span className="text-primary">Email:</span>{" "}
+                    technofear4@gmail.com
+                  </p>
+                  <p>
+                    <span className="text-primary">Phone:</span> +91 9512918210
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
+                <a
+                  href="https://wa.me/919512918210"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  Chat on WhatsApp
+                </a>
               </div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Connect with Us</h3>
-              <a
-                href="https://wa.me/919512918210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                <MessageSquare className="w-5 h-5" />
-                Chat on WhatsApp
-              </a>
+
+            <div className="glass-card p-6 rounded-lg animate-fade-up">
+              <h3 className="text-xl font-semibold mb-6">Our Impact</h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">
+                    {statistics?.satisfied_clients || 0}+
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Satisfied Clients
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">
+                    {statistics?.completed_projects || 0}+
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Projects Completed
+                  </p>
+                </div>
+                <div className="text-center col-span-2">
+                  <p className="text-3xl font-bold text-primary">24/7</p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Support Available
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
