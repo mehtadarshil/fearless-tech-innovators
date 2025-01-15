@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 bg-gradient-animated animate-gradient relative">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 bg-background relative">
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
       <div className="text-center max-w-4xl mx-auto space-y-8 animate-fade-up relative z-10">
         <div className="space-y-4">

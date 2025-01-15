@@ -23,8 +23,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-lg border-b border-border animate-fade-in">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between h-16 px-4">
           <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-pointer hover:scale-105 transition-transform">
             <span className="text-xl font-bold text-primary">TechNoFear</span>
           </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
         {/* Mobile Navigation Menu */}
         {isOpen && (
           <div className="md:hidden animate-fade-in">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.name}
