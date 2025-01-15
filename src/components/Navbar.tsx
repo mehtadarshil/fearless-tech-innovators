@@ -1,20 +1,26 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useMobile } from "@/hooks/use-mobile";
+
+const navItems = [
+  { name: "Home", href: "home" },
+  { name: "Services", href: "services" },
+  { name: "Technologies", href: "technologies" },
+  { name: "Impact", href: "impact" },
+  { name: "Contact", href: "contact" },
+  { name: "Blog", href: "/blog" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const isMobile = useMobile();
 
-  const navItems = [
-    { name: "Home", id: "home" },
-    { name: "Services", id: "services" },
-    { name: "Impact", id: "impact" },
-    { name: "Contact", id: "contact" },
-  ];
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
+  const scrollToSection = (sectionId: string) => {
+    if (sectionId.startsWith("/")) {
+      return; // Let the router handle full URLs
+    }
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
@@ -30,37 +36,35 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-4">
             {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors hover:scale-105 transform"
-              >
-                {item.name}
-              </button>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  {item.name}
+                </button>
+              )
             ))}
-            <Link
-              to="/blog"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors hover:scale-105 transform"
-            >
-              Blog
-            </Link>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all hover:scale-105 transform"
-            >
-              Get Started
-            </button>
           </div>
 
-          {/* Mobile Navigation Button */}
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-primary transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -72,25 +76,12 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-colors"
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
                 >
                   {item.name}
                 </button>
               ))}
-              <Link
-                to="/blog"
-                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Blog
-              </Link>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full px-3 py-2 rounded-md text-base font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity text-center"
-              >
-                Get Started
-              </button>
             </div>
           </div>
         )}

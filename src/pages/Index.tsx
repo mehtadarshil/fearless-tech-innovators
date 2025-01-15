@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Impact from "@/components/Impact";
+import Technologies from "@/components/Technologies";
 
 const Index = () => {
   return (
@@ -13,6 +14,9 @@ const Index = () => {
       </div>
       <div id="services">
         <Services />
+      </div>
+      <div id="technologies">
+        <Technologies />
       </div>
       <div id="impact">
         <Impact />
