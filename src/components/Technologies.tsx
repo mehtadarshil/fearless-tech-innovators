@@ -69,23 +69,29 @@ const Technologies = () => {
   return (
     <section className="py-20 px-4 bg-background relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 animate-fade-up">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gradient">
             Technologies We Use
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We leverage cutting-edge technologies to deliver exceptional solutions
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {technologies.map((tech, index) => (
-            <div
+            <motion.div
               key={tech.name}
-              className="glass-card p-4 rounded-lg text-center hover:scale-105 transition-transform duration-300 animate-fade-up flex items-center justify-center min-h-[100px]"
-              style={{
-                animationDelay: `${index * 50}ms`,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card p-4 rounded-lg text-center transition-all duration-300 hover:border-primary hover:scale-105 flex items-center justify-center min-h-[100px]"
             >
               <div>
                 <p className="font-medium text-sm">{tech.name}</p>
@@ -93,7 +99,7 @@ const Technologies = () => {
                   {tech.category}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

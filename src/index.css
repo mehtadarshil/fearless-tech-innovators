@@ -37,7 +37,11 @@
 }
 
 .glass-card {
-  @apply backdrop-blur-md bg-opacity-20 bg-black border border-gray-800;
+  @apply backdrop-blur-md bg-opacity-20 bg-black border border-gray-800 transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply border-primary shadow-lg shadow-primary/20;
 }
 
 .hover-lift {
