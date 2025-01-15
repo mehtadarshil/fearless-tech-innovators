@@ -12,9 +12,11 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const { error } = await supabase.from("contact_messages").insert([
         {
@@ -26,11 +28,15 @@ const Contact = () => {
 
       if (error) throw error;
 
-      toast.success("Message sent successfully!");
+      toast.success("Message sent successfully! We'll get back to you soon.", {
+        duration: 5000,
+      });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Error sending message:", error);
       toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -58,6 +64,7 @@ const Contact = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
@@ -69,6 +76,7 @@ const Contact = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
@@ -80,10 +88,11 @@ const Contact = () => {
                   }
                   className="min-h-[120px]"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
-              <Button type="submit" className="w-full">
-                Send Message
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

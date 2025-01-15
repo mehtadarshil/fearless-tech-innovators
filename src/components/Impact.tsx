@@ -1,6 +1,42 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Trophy, Users, Clock } from "lucide-react";
+import { useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
+const CountUp = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const startTime = useRef<number | null>(null);
+  const frameId = useRef<number>();
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const animate = (timestamp: number) => {
+      if (!startTime.current) startTime.current = timestamp;
+      const progress = timestamp - startTime.current;
+      const percentage = Math.min(progress / duration, 1);
+      
+      setCount(Math.floor(end * percentage));
+
+      if (percentage < 1) {
+        frameId.current = requestAnimationFrame(animate);
+      }
+    };
+
+    frameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (frameId.current) {
+        cancelAnimationFrame(frameId.current);
+      }
+    };
+  }, [end, duration, isInView]);
+
+  return <span ref={ref}>{count}</span>;
+};
 
 const Impact = () => {
   const { data: statistics } = useQuery({
@@ -35,7 +71,9 @@ const Impact = () => {
             <div className="flex justify-center mb-4">
               <Trophy className="w-12 h-12 text-primary animate-pulse" />
             </div>
-            <h3 className="text-4xl font-bold text-primary mb-2">{statistics?.satisfied_clients || 0}+</h3>
+            <h3 className="text-4xl font-bold text-primary mb-2">
+              <CountUp end={statistics?.satisfied_clients || 0} />+
+            </h3>
             <p className="text-muted-foreground">Satisfied Clients</p>
           </div>
 
@@ -43,7 +81,9 @@ const Impact = () => {
             <div className="flex justify-center mb-4">
               <Users className="w-12 h-12 text-primary animate-pulse" />
             </div>
-            <h3 className="text-4xl font-bold text-primary mb-2">{statistics?.completed_projects || 0}+</h3>
+            <h3 className="text-4xl font-bold text-primary mb-2">
+              <CountUp end={statistics?.completed_projects || 0} />+
+            </h3>
             <p className="text-muted-foreground">Projects Completed</p>
           </div>
 
