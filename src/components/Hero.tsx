@@ -1,21 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
-import ThreeCharacter from "./ThreeCharacter";
 
 const Hero = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 bg-background relative">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm">
-        <Canvas
-          camera={{ position: [0, 0, 5] }}
-          style={{ width: '100%', height: '100%' }}
-        >
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <ThreeCharacter />
-        </Canvas>
-      </div>
+      <div className="absolute inset-0 bg-gradient-animated animate-gradient" />
       <div className="text-center max-w-4xl mx-auto space-y-8 animate-fade-up relative z-10">
         <div className="space-y-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight animate-fade-up glass-card p-8 rounded-lg shadow-xl" style={{ animationDelay: "200ms" }}>
