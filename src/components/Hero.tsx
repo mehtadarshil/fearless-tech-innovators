@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import ThreeCharacter from "./ThreeCharacter";
 
 const Hero = () => {
@@ -11,7 +12,6 @@ const Hero = () => {
           <Canvas
             camera={{ position: [0, 0, 5], fov: 75 }}
             style={{ 
-              background: 'transparent',
               position: 'absolute',
               top: 0,
               left: 0,
@@ -19,8 +19,10 @@ const Hero = () => {
               height: '100%'
             }}
           >
+            <color attach="background" args={['transparent']} />
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} />
+            <OrbitControls enableZoom={false} />
             <ThreeCharacter />
           </Canvas>
         </div>

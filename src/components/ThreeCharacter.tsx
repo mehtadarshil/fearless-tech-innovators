@@ -5,16 +5,16 @@ import { Mesh } from 'three';
 const ThreeCharacter = () => {
   const meshRef = useRef<Mesh>(null);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.01;
     }
   });
 
   return (
-    <mesh ref={meshRef} position={[0, 0, 0]}>
+    <mesh ref={meshRef}>
       <boxGeometry args={[1, 2, 1]} />
-      <meshStandardMaterial color="#cfb673" />
+      <meshStandardMaterial color="#cfb673" metalness={0.1} roughness={0.5} />
     </mesh>
   );
 };
