@@ -10,6 +10,7 @@ const Hero = () => {
         <div className="w-full h-full">
           <Canvas
             camera={{ position: [0, 0, 5], fov: 75 }}
+            style={{ background: 'transparent' }}
           >
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} />
