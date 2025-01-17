@@ -1,4 +1,13 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+
+const mainTechnologies = [
+  { name: "Flutter", category: "Mobile" },
+  { name: "React.js", category: "Frameworks" },
+  { name: "Node.js", category: "Languages" },
+  { name: "WordPress", category: "Frameworks" },
+  { name: "Laravel", category: "Frameworks" },
+];
 
 const technologies = [
   // Development Languages
@@ -66,6 +75,10 @@ const technologies = [
 ];
 
 const Technologies = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedTechnologies = showAll ? technologies : mainTechnologies;
+
   return (
     <section className="py-20 px-4 bg-background relative">
       <div className="max-w-7xl mx-auto">
@@ -83,8 +96,8 @@ const Technologies = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {technologies.map((tech, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+          {displayedTechnologies.map((tech, index) => (
             <motion.div
               key={tech.name}
               initial={{ opacity: 0, y: 20 }}
@@ -102,6 +115,47 @@ const Technologies = () => {
             </motion.div>
           ))}
         </div>
+
+        {!showAll && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll(true)}
+              className="relative group bg-primary/10 hover:bg-primary/20 text-primary font-medium px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+              style={{
+                transform: "perspective(1000px)",
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <div
+                className="absolute inset-0 bg-primary/5 rounded-lg transform group-hover:translate-z-2 transition-transform duration-300"
+                style={{
+                  transform: "translateZ(-1px)",
+                }}
+              />
+              <span className="relative inline-flex items-center gap-2">
+                Show More Technologies
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
