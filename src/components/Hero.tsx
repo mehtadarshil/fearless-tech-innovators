@@ -7,14 +7,15 @@ const Hero = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 bg-background relative">
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm">
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-        >
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <ThreeCharacter />
-        </Canvas>
+        <div className="w-full h-full">
+          <Canvas
+            camera={{ position: [0, 0, 5], fov: 75 }}
+          >
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} />
+            <ThreeCharacter />
+          </Canvas>
+        </div>
       </div>
       <div className="text-center max-w-4xl mx-auto space-y-8 animate-fade-up relative z-10">
         <div className="space-y-4">

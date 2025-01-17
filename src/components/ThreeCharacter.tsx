@@ -1,11 +1,10 @@
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF, OrbitControls } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
+import * as THREE from 'three';
 
-function Character(props: any) {
-  const group = useRef<THREE.Group>();
-  const { nodes, materials } = useGLTF('/character.glb');
+function Character() {
+  const group = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     if (group.current) {
@@ -14,13 +13,13 @@ function Character(props: any) {
   });
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group}>
       <mesh
         castShadow
         receiveShadow
-        geometry={new THREE.BoxGeometry(1, 2, 1)}
-        material={new THREE.MeshStandardMaterial({ color: '#cfb673' })}
+        position={[0, 0, 0]}
       >
+        <boxGeometry args={[1, 2, 1]} />
         <meshStandardMaterial color="#cfb673" />
       </mesh>
     </group>
@@ -28,9 +27,5 @@ function Character(props: any) {
 }
 
 export default function ThreeCharacter() {
-  return (
-    <div className="absolute inset-0 z-0">
-      <canvas id="three-canvas" className="w-full h-full" />
-    </div>
-  );
+  return <Character />;
 }
