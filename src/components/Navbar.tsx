@@ -8,9 +8,9 @@ const navItems = [
   { name: "Services", href: "services" },
   { name: "Technologies", href: "technologies" },
   { name: "Impact", href: "impact" },
+  { name: "Contact", href: "contact" },
   { name: "Our Work", href: "/work" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "contact" },
 ];
 
 const Navbar = () => {
@@ -36,14 +36,14 @@ const Navbar = () => {
             <span className="text-xl font-bold text-primary">TechNoFear</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
+          {/* Desktop Navigation - Reduced space-x from 4 to 2 */}
+          <div className="hidden md:flex md:items-center md:space-x-2">
             {navItems.map((item) => (
               item.href.startsWith("/") ? (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-foreground/90 hover:text-primary px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
+                  className="text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
                 >
                   {item.name}
                 </Link>
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-foreground/90 hover:text-primary px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
+                  className="text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
                 >
                   {item.name}
                 </button>
