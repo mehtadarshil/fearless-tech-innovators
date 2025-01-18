@@ -26,7 +26,11 @@ const Contact = () => {
         },
       ]);
 
-      if (error) throw error;
+      if (error) {
+        console.error("Error sending message:", error);
+        toast.error("Failed to send message. Please try again.");
+        return;
+      }
 
       toast.success("Message sent successfully! We'll get back to you soon.", {
         duration: 5000,
