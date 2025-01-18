@@ -8,8 +8,9 @@ const navItems = [
   { name: "Services", href: "services" },
   { name: "Technologies", href: "technologies" },
   { name: "Impact", href: "impact" },
-  { name: "Contact", href: "contact" },
+  { name: "Our Work", href: "/work" },
   { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "contact" },
 ];
 
 const Navbar = () => {
