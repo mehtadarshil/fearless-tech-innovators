@@ -15,13 +15,13 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (isHovering) {
+      if (hoveredItem) {
         const target = e.target as HTMLElement;
         const rect = target.getBoundingClientRect();
         setCursorPosition({
@@ -33,7 +33,7 @@ const Navbar = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [isHovering]);
+  }, [hoveredItem]);
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId.startsWith("/")) {
@@ -61,12 +61,12 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
                   className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group overflow-hidden"
                 >
                   {item.name}
-                  {isHovering && (
+                  {hoveredItem === item.name && (
                     <div
                       className="absolute pointer-events-none mix-blend-screen animate-pulse"
                       style={{
@@ -85,12 +85,12 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
                   className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group overflow-hidden"
                 >
                   {item.name}
-                  {isHovering && (
+                  {hoveredItem === item.name && (
                     <div
                       className="absolute pointer-events-none mix-blend-screen animate-pulse"
                       style={{
