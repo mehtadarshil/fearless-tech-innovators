@@ -66,7 +66,6 @@ const technologies = [
   { name: "Tableau", category: "Analytics" },
   { name: "Power BI", category: "Analytics" },
   { name: "Figma", category: "Design" },
-  { name: "Adobe XD", category: "Design" },
 ];
 
 const Technologies = () => {
