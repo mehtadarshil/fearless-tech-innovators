@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -15,11 +15,24 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isHovering) {
+        setCursorPosition({ x: e.clientX, y: e.clientY });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isHovering]);
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId.startsWith("/")) {
-      return; // Let the router handle full URLs
+      return;
     }
     const element = document.getElementById(sectionId);
     if (element) {
@@ -32,28 +45,44 @@ const Navbar = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl z-50 bg-background/30 backdrop-blur-md border border-primary/20 rounded-full animate-fade-in">
       <div className="px-4 py-2">
         <div className="flex items-center justify-between">
-          <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-pointer hover:scale-105 transition-transform">
+          <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-none hover:scale-105 transition-transform">
             <span className="text-xl font-bold text-primary">TechNoFear</span>
           </div>
 
-          {/* Desktop Navigation - Reduced space-x from 4 to 2 */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-2">
             {navItems.map((item) => (
               item.href.startsWith("/") ? (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group"
                 >
                   {item.name}
+                  <div
+                    className={`pointer-events-none absolute -inset-2 bg-primary/20 rounded-full opacity-0 blur-xl transition-opacity group-hover:opacity-100 animate-pulse`}
+                    style={{
+                      background: `radial-gradient(circle at center, rgba(207, 182, 115, 0.3) 0%, transparent 70%)`,
+                    }}
+                  />
                 </Link>
               ) : (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/10"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group"
                 >
                   {item.name}
+                  <div
+                    className={`pointer-events-none absolute -inset-2 bg-primary/20 rounded-full opacity-0 blur-xl transition-opacity group-hover:opacity-100 animate-pulse`}
+                    style={{
+                      background: `radial-gradient(circle at center, rgba(207, 182, 115, 0.3) 0%, transparent 70%)`,
+                    }}
+                  />
                 </button>
               )
             ))}
@@ -87,6 +116,18 @@ const Navbar = () => {
           </div>
         )}
       </div>
+
+      {/* Custom cursor glow effect */}
+      {isHovering && (
+        <div
+          className="fixed pointer-events-none w-8 h-8 rounded-full mix-blend-screen animate-pulse z-50"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(207, 182, 115, 0.8) 0%, transparent 70%)',
+            transform: `translate(${cursorPosition.x - 16}px, ${cursorPosition.y - 16}px)`,
+            transition: 'transform 0.1s ease-out',
+          }}
+        />
+      )}
     </nav>
   );
 };

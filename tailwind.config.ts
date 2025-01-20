@@ -94,8 +94,25 @@ export default {
           "0%": {
             transform: "translate(0, 0)",
           },
-          "100%": {
+          "50%": {
             transform: "translate(100px, -100px)",
+          },
+          "100%": {
+            transform: "translate(0, 0)",
+          },
+        },
+        "glow": {
+          "0%": {
+            opacity: "0.5",
+            transform: "scale(1)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            opacity: "0.5",
+            transform: "scale(1)",
           },
         },
       },
@@ -105,9 +122,13 @@ export default {
         "gradient": "gradient-animation 15s ease infinite",
         "float": "float 6s ease-in-out infinite",
         "particles": "particles 8s linear infinite",
+        "glow": "glow 2s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-animated": "linear-gradient(-45deg, #000000 0%, #cfb673 50%, #000000 100%)",
+      },
+      cursor: {
+        none: "none",
       },
     },
   },
