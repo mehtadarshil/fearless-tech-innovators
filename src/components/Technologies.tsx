@@ -4,9 +4,10 @@ import { useState } from "react";
 const mainTechnologies = [
   { name: "Flutter", category: "Mobile" },
   { name: "React.js", category: "Frameworks" },
+  { name: "Next.js", category: "Frameworks" },
   { name: "Node.js", category: "Languages" },
-  { name: "WordPress", category: "Frameworks" },
   { name: "Laravel", category: "Frameworks" },
+  { name: "WordPress", category: "Frameworks" },
 ];
 
 const technologies = [
@@ -22,35 +23,35 @@ const technologies = [
   { name: "Spring Boot", category: "Frameworks" },
   { name: "Django", category: "Frameworks" },
   { name: "Flask", category: "Frameworks" },
-  { name: ".NET Core", category: "Frameworks" },
-  { name: "Express.js", category: "Frameworks" },
-  { name: "Ruby on Rails", category: "Frameworks" },
+  // { name: ".NET Core", category: "Frameworks" },
+  // { name: "Express.js", category: "Frameworks" },
+  // { name: "Ruby on Rails", category: "Frameworks" },
   { name: "React.js", category: "Frameworks" },
   { name: "Angular", category: "Frameworks" },
   { name: "Vue.js", category: "Frameworks" },
-  { name: "Svelte", category: "Frameworks" },
+  // { name: "Svelte", category: "Frameworks" },
   
   // Mobile Development
   { name: "Flutter", category: "Mobile" },
   { name: "React Native", category: "Mobile" },
-  { name: "Xamarin", category: "Mobile" },
+  // { name: "Xamarin", category: "Mobile" },
   { name: "Swift", category: "Mobile" },
   { name: "Kotlin", category: "Mobile" },
   
   // Cloud & DevOps
   { name: "Amazon Web Services (AWS)", category: "Cloud & DevOps" },
-  { name: "Microsoft Azure", category: "Cloud & DevOps" },
-  { name: "Google Cloud Platform (GCP)", category: "Cloud & DevOps" },
+  // { name: "Microsoft Azure", category: "Cloud & DevOps" },
+  // { name: "Google Cloud Platform (GCP)", category: "Cloud & DevOps" },
   { name: "Kubernetes", category: "Cloud & DevOps" },
   { name: "Docker", category: "Cloud & DevOps" },
   { name: "Jenkins", category: "Cloud & DevOps" },
   
   // Version Control & Collaboration
-  { name: "Git", category: "Tools" },
-  { name: "GitHub", category: "Tools" },
-  { name: "Bitbucket", category: "Tools" },
-  { name: "Jira", category: "Tools" },
-  { name: "Slack", category: "Tools" },
+  // { name: "Git", category: "Tools" },
+  // { name: "GitHub", category: "Tools" },
+  // { name: "Bitbucket", category: "Tools" },
+  // { name: "Jira", category: "Tools" },
+  // { name: "Slack", category: "Tools" },
   
   // Databases & Data
   { name: "MySQL", category: "Databases" },
