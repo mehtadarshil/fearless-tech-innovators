@@ -13,16 +13,11 @@ const technologies = [
   // Development Languages
   { name: "Java", category: "Languages" },
   { name: "Python", category: "Languages" },
-  { name: "C#", category: "Languages" },
   { name: "Node.js", category: "Languages" },
   { name: "Ruby", category: "Languages" },
   { name: "PHP", category: "Languages" },
-  { name: "JavaScript", category: "Languages" },
   { name: "TypeScript", category: "Languages" },
   { name: "HTML5", category: "Languages" },
-  { name: "CSS3", category: "Languages" },
-  { name: "Dart", category: "Languages" },
-  
   // Frameworks
   { name: "Spring Boot", category: "Frameworks" },
   { name: "Django", category: "Frameworks" },

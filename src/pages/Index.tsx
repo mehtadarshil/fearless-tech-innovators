@@ -7,7 +7,7 @@ import Technologies from "@/components/Technologies";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <Navbar />
       <div id="home">
         <Hero />
