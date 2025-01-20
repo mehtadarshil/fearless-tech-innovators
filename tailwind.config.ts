@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -49,11 +52,6 @@ export default {
           foreground: "#ffffff",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "fade-up": {
           "0%": {
@@ -84,11 +82,29 @@ export default {
             backgroundPosition: "0% 50%",
           },
         },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+        },
+        "particles": {
+          "0%": {
+            transform: "translate(0, 0)",
+          },
+          "100%": {
+            transform: "translate(100px, -100px)",
+          },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
         "gradient": "gradient-animation 15s ease infinite",
+        "float": "float 6s ease-in-out infinite",
+        "particles": "particles 8s linear infinite",
       },
       backgroundImage: {
         "gradient-animated": "linear-gradient(-45deg, #000000 0%, #cfb673 50%, #000000 100%)",
