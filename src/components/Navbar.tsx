@@ -22,7 +22,12 @@ const Navbar = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isHovering) {
-        setCursorPosition({ x: e.clientX, y: e.clientY });
+        const target = e.target as HTMLElement;
+        const rect = target.getBoundingClientRect();
+        setCursorPosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        });
       }
     };
 
@@ -42,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl z-50 bg-background/30 backdrop-blur-md border border-primary/20 rounded-full animate-fade-in">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl z-50 bg-background/5 backdrop-blur-sm border border-primary/20 rounded-full animate-fade-in">
       <div className="px-4 py-2">
         <div className="flex items-center justify-between">
           <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-none hover:scale-105 transition-transform">
@@ -58,15 +63,23 @@ const Navbar = () => {
                   to={item.href}
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
-                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group"
+                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group overflow-hidden"
                 >
                   {item.name}
-                  <div
-                    className={`pointer-events-none absolute -inset-2 bg-primary/20 rounded-full opacity-0 blur-xl transition-opacity group-hover:opacity-100 animate-pulse`}
-                    style={{
-                      background: `radial-gradient(circle at center, rgba(207, 182, 115, 0.3) 0%, transparent 70%)`,
-                    }}
-                  />
+                  {isHovering && (
+                    <div
+                      className="absolute pointer-events-none mix-blend-screen animate-pulse"
+                      style={{
+                        background: 'radial-gradient(circle at center, rgba(207, 182, 115, 0.8) 0%, transparent 70%)',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        left: `${cursorPosition.x - 20}px`,
+                        top: `${cursorPosition.y - 20}px`,
+                        transition: 'all 0.1s ease-out',
+                      }}
+                    />
+                  )}
                 </Link>
               ) : (
                 <button
@@ -74,15 +87,23 @@ const Navbar = () => {
                   onClick={() => scrollToSection(item.href)}
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
-                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group"
+                  className="relative text-foreground/90 hover:text-primary px-2 py-1.5 rounded-full text-sm font-medium transition-colors cursor-none group overflow-hidden"
                 >
                   {item.name}
-                  <div
-                    className={`pointer-events-none absolute -inset-2 bg-primary/20 rounded-full opacity-0 blur-xl transition-opacity group-hover:opacity-100 animate-pulse`}
-                    style={{
-                      background: `radial-gradient(circle at center, rgba(207, 182, 115, 0.3) 0%, transparent 70%)`,
-                    }}
-                  />
+                  {isHovering && (
+                    <div
+                      className="absolute pointer-events-none mix-blend-screen animate-pulse"
+                      style={{
+                        background: 'radial-gradient(circle at center, rgba(207, 182, 115, 0.8) 0%, transparent 70%)',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        left: `${cursorPosition.x - 20}px`,
+                        top: `${cursorPosition.y - 20}px`,
+                        transition: 'all 0.1s ease-out',
+                      }}
+                    />
+                  )}
                 </button>
               )
             ))}
@@ -116,18 +137,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-
-      {/* Custom cursor glow effect */}
-      {isHovering && (
-        <div
-          className="fixed pointer-events-none w-8 h-8 rounded-full mix-blend-screen animate-pulse z-50"
-          style={{
-            background: 'radial-gradient(circle at center, rgba(207, 182, 115, 0.8) 0%, transparent 70%)',
-            transform: `translate(${cursorPosition.x - 16}px, ${cursorPosition.y - 16}px)`,
-            transition: 'transform 0.1s ease-out',
-          }}
-        />
-      )}
     </nav>
   );
 };
