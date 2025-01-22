@@ -112,9 +112,9 @@ const Contact = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Contact Details</h3>
                   <div className="space-y-4">
-                    <p>
+                    {/* <p>
                       <span className="text-primary">Company:</span> TechNoFear
-                    </p>
+                    </p> */}
                     <p>
                       <span className="text-primary">Email:</span>{" "}
                       technofear4@gmail.com

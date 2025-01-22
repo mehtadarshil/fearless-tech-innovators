@@ -23,14 +23,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden bg-transparent">
+    <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden bg-transparent" style={{minHeight: "65vh"}}>
       {/* Animated Background */}
       <AnimatedBackground />
       
       {/* Content */}
       <div className="text-center max-w-4xl mx-auto space-y-8 relative z-10">
         <div className="space-y-6">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight animate-fade-up bg-transparent" style={{ animationDelay: "200ms" }}>
+          <h1 className="text-3xl sm:text-5xl md:text-5xl font-bold tracking-tight animate-fade-up bg-transparent" style={{ animationDelay: "200ms" }}>
             Empowering Your Digital Future with{" "}
             <span className="text-gradient animate-pulse relative">
               {text}
