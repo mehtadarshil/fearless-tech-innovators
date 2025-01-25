@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar";
 
 const Work = () => {
   const { data: workItems, isLoading, error } = useQuery({
@@ -35,7 +36,8 @@ const Work = () => {
 
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
+      <Navbar />
+      <div className="max-w-7xl my-10 mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gradient mb-4">Our Work</h1>
           <p className="text-muted-foreground">Explore our latest projects and success stories</p>
@@ -64,14 +66,14 @@ const Work = () => {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        {/* <div className="mt-8 text-center">
           <Link
             to="/"
             className="inline-flex items-center px-6 py-3 glass-card rounded-lg hover:bg-secondary/20 transition-all duration-300 hover:scale-105 transform"
           >
             Back to Home
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
