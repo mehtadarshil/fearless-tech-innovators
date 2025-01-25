@@ -9,7 +9,7 @@ const navItems = [
   // { name: "Technologies", href: "technologies" },
   // { name: "Impact", href: "impact" },
   // { name: "Contact", href: "contact" },
-  { name: "Our Work", href: "/work" },
+  // { name: "Our Work", href: "/work" },
   // { name: "Blog", href: "/blog" },
 ];
 

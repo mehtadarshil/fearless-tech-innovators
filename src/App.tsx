@@ -13,8 +13,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/work" element={<Work />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
+          {/* <Route path="/work" element={<Work />} /> */}
         </Routes>
       </Router>
     </QueryClientProvider>
