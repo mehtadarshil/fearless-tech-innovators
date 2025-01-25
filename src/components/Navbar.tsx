@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navItems = [
-  { name: "Home", href: "home" },
-  { name: "Services", href: "services" },
-  { name: "Technologies", href: "technologies" },
-  { name: "Impact", href: "impact" },
-  { name: "Contact", href: "contact" },
+  // { name: "Home", href: "home" },
+  // { name: "Services", href: "services" },
+  // { name: "Technologies", href: "technologies" },
+  // { name: "Impact", href: "impact" },
+  // { name: "Contact", href: "contact" },
   { name: "Our Work", href: "/work" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
 ];
 
 const Navbar = () => {
