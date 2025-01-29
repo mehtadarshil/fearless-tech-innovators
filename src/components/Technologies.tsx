@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Android, Apple, FileCode, Server, Python, Globe, Figma, PenTool } from "lucide-react";
+import { Smartphone, Apple, Code2, Server, Terminal, Globe, Figma, Paintbrush } from "lucide-react";
 
 const technologies = [
   { 
     name: "Android",
     category: "Mobile",
-    icon: Android
+    icon: Smartphone
   },
   { 
     name: "iOS",
@@ -15,17 +15,17 @@ const technologies = [
   { 
     name: "Flutter",
     category: "Mobile",
-    icon: FileCode // Using FileCode as a generic icon for Flutter
+    icon: Code2
   },
   { 
     name: "React Native",
     category: "Mobile",
-    icon: FileCode
+    icon: Code2
   },
   { 
     name: "React Js",
     category: "Frameworks",
-    icon: FileCode
+    icon: Code2
   },
   { 
     name: "Node Js",
@@ -35,7 +35,7 @@ const technologies = [
   { 
     name: "Python",
     category: "Languages",
-    icon: Python
+    icon: Terminal
   },
   { 
     name: "WordPress",
@@ -45,7 +45,7 @@ const technologies = [
   { 
     name: "Laravel",
     category: "Frameworks",
-    icon: FileCode
+    icon: Code2
   },
   { 
     name: "Figma",
@@ -55,7 +55,7 @@ const technologies = [
   { 
     name: "Adobe XD",
     category: "Design",
-    icon: PenTool
+    icon: Paintbrush
   }
 ];
 
