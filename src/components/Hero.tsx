@@ -22,6 +22,13 @@ const Hero = () => {
     return () => clearInterval(typingInterval);
   }, []);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden bg-transparent" style={{minHeight: "65vh"}}>
       {/* Animated Background */}
@@ -48,7 +55,10 @@ const Hero = () => {
           
           {/* CTA Button */}
           <div className="animate-fade-up" style={{ animationDelay: "600ms" }}>
-            <button className="group relative px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+            <button 
+              onClick={scrollToContact}
+              className="group relative px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
+            >
               Get Started
               <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 -z-10 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
