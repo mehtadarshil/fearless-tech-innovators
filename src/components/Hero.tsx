@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [text, setText] = useState("");
-  const fullText = "Fearless Innovation";
+  const fullText = "Digital Excellence";
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="text-center max-w-4xl mx-auto space-y-8 relative z-10">
         <div className="space-y-6">
           <h1 className="text-3xl sm:text-5xl md:text-5xl font-bold tracking-tight animate-fade-up bg-transparent" style={{ animationDelay: "200ms" }}>
-            Empowering Your Digital Future with{" "}
+            Transforming Ideas into{" "}
             <span className="text-gradient animate-pulse relative">
               {text}
               {!isTypingComplete && (
@@ -42,8 +42,8 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-up glass-card p-6 rounded-lg backdrop-blur-lg bg-transparent" style={{ animationDelay: "400ms" }}>
-            TechNoFear bridges the gap between technology and trust, delivering
-            cutting-edge IT solutions tailored to your needs.
+            Trionyx Software Solutions delivers innovative and scalable software solutions 
+            that empower businesses to thrive in the digital age.
           </p>
           
           {/* CTA Button */}
