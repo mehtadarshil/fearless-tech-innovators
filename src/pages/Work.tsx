@@ -35,7 +35,7 @@ const Work = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-transparent">
       <Navbar />
       <div className="max-w-7xl my-10 mx-auto">
         <div className="text-center mb-12">
@@ -65,15 +65,6 @@ const Work = () => {
             </div>
           ))}
         </div>
-
-        {/* <div className="mt-8 text-center">
-          <Link
-            to="/"
-            className="inline-flex items-center px-6 py-3 glass-card rounded-lg hover:bg-secondary/20 transition-all duration-300 hover:scale-105 transform"
-          >
-            Back to Home
-          </Link>
-        </div> */}
       </div>
     </div>
   );
