@@ -36,7 +36,7 @@ const Hero = () => {
       
       {/* Content */}
       <div className="text-center max-w-4xl mx-auto space-y-8 relative z-10">
-        <div className="space-y-6">
+        <div className="space-y-6 pb-8"> {/* Added pb-8 for bottom padding */}
           <h1 className="text-3xl sm:text-5xl md:text-5xl font-bold tracking-tight animate-fade-up bg-transparent" style={{ animationDelay: "200ms" }}>
             Transforming Ideas into{" "}
             <span className="text-gradient animate-pulse relative">
@@ -54,7 +54,7 @@ const Hero = () => {
           </p>
           
           {/* CTA Button */}
-          <div className="animate-fade-up" style={{ animationDelay: "600ms" }}>
+          <div className="animate-fade-up pt-4" style={{ animationDelay: "600ms" }}> {/* Added pt-4 for top padding */}
             <button 
               onClick={scrollToContact}
               className="group relative px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
