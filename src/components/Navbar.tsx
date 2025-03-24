@@ -31,8 +31,8 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [hoveredItem]);
 
   const scrollToSection = (sectionId: string) => {
@@ -49,13 +49,16 @@ const Navbar = () => {
   return (
     <nav className="hidden">
       <div className="px-4 py-2">
-        <div className="flex items-center justify-between">
-          <div onClick={() => scrollToSection("home")} className="flex items-center space-x-2 cursor-none hover:scale-105 transition-transform">
+        <div className="flex items-center justify-center">
+          <div
+            onClick={() => scrollToSection("home")}
+            className="flex items-center space-x-2 cursor-none hover:scale-105 transition-transform"
+          >
             <span className="text-xl font-bold text-primary">TechNoFear</span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-2">
+          {/* <div className="hidden md:flex md:items-center md:space-x-2">
             {navItems.map((item) => (
               item.href.startsWith("/") ? (
                 <Link
@@ -107,21 +110,21 @@ const Navbar = () => {
                 </button>
               )
             ))}
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-full text-foreground/90 hover:text-primary hover:bg-primary/10 transition-colors"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isOpen && (
+        {/* {isOpen && (
           <div className="md:hidden animate-fade-in mt-2">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background/50 backdrop-blur-lg rounded-2xl border border-primary/20">
               {navItems.map((item) => (
@@ -135,7 +138,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </nav>
   );

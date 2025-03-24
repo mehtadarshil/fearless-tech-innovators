@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 const Work = () => {
-  const { data: workItems, isLoading, error } = useQuery({
+  const {
+    data: workItems,
+    isLoading,
+    error
+  } = useQuery({
     queryKey: ["workItems"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -14,7 +18,7 @@ const Work = () => {
 
       if (error) throw error;
       return data;
-    },
+    }
   });
 
   if (isLoading) {
@@ -29,7 +33,9 @@ const Work = () => {
     console.error("Error fetching work items:", error);
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-red-500">Error loading work items. Please try again later.</div>
+        <div className="text-red-500">
+          Error loading work items. Please try again later.
+        </div>
       </div>
     );
   }
@@ -40,7 +46,9 @@ const Work = () => {
       <div className="max-w-7xl my-10 mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gradient mb-4">Our Work</h1>
-          <p className="text-muted-foreground">Explore our latest projects and success stories</p>
+          <p className="text-muted-foreground">
+            Explore our latest projects and success stories
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,10 +65,10 @@ const Work = () => {
                 />
               )}
               <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2 text-gradient">{item.title}</h2>
-                <p className="text-muted-foreground">
-                  {item.description}
-                </p>
+                <h2 className="text-xl font-semibold mb-2 text-gradient">
+                  {item.title}
+                </h2>
+                <p className="text-muted-foreground">{item.description}</p>
               </div>
             </div>
           ))}
