@@ -112,15 +112,18 @@ const Contact = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Contact Details</h3>
                   <div className="space-y-4">
-                    {/* <p>
-                      <span className="text-primary">Company:</span> TechNoFear
-                    </p> */}
                     <p>
                       <span className="text-primary">Email:</span>{" "}
-                      technofear4@gmail.com
+                      trionixsoftwaresolutions@gmail.com
                     </p>
                     <p>
-                      <span className="text-primary">Phone:</span> +91 9512918210
+                      <span className="text-primary">Phone:</span> +91 9558315343
+                    </p>
+                    <p>
+                      <span className="text-primary">CEO:</span> Mehta Darshil
+                    </p>
+                    <p>
+                      <span className="text-primary">CTO:</span> Sondagar Harshil
                     </p>
                   </div>
                 </div>
@@ -136,6 +139,36 @@ const Contact = () => {
                     Chat on WhatsApp
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-gradient-to-r from-primary/5 to-purple-500/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10 animate-fade-up">
+            <h2 className="text-3xl font-bold mb-3">Visit Our Location</h2>
+            <p className="text-lg text-muted-foreground">
+              Savar Kundla, Gujarat, India
+            </p>
+          </div>
+          <div className="glass-card p-3 rounded-lg shadow-lg animate-fade-up">
+            <div className="relative h-[400px] rounded-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 pointer-events-none z-10 rounded-xl" />
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59589.97195431568!2d71.27486367909123!3d21.337719974756534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39589de4c06b550d%3A0xceaf65c8dc2a5cce!2sSavarkundla%2C%20Gujarat%20364515!5e0!3m2!1sen!2sin!4v1718352561374!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+              ></iframe>
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-lg shadow-lg z-20 flex items-center space-x-2">
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                <span className="font-medium">Trionix Software Solutions</span>
               </div>
             </div>
           </div>
