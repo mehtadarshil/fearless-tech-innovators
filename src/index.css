@@ -44,6 +44,14 @@
   @apply border-primary shadow-lg shadow-primary/20;
 }
 
+.glass-card-hover {
+  @apply backdrop-blur-sm bg-opacity-10 bg-black/5 border border-transparent transition-all duration-300;
+}
+
+.glass-card-hover:hover {
+  @apply border-primary/30 shadow-lg shadow-primary/10 scale-[1.02];
+}
+
 .hover-lift {
   @apply transition-transform duration-300 hover:-translate-y-1;
 }
@@ -88,4 +96,9 @@ canvas {
 /* Make sure iframe content gets proper interaction */
 iframe {
   pointer-events: auto !important;
+}
+
+/* Ensure proper styling for tabler icons */
+[stroke="currentColor"] {
+  @apply text-primary;
 }
