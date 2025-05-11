@@ -86,8 +86,6 @@ const Impact = () => {
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
-      
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-up">
           <h2 className="text-4xl font-bold mb-4 text-gradient">Our Impact</h2>
@@ -109,8 +107,6 @@ const Impact = () => {
           ))}
         </div>
       </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
     </section>
   );
 };

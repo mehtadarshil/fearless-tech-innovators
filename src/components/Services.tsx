@@ -55,8 +55,6 @@ const services = [
 const Services = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
-      
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-up">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gradient">Our Services</h2>
@@ -78,8 +76,6 @@ const Services = () => {
           ))}
         </div>
       </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
     </section>
   );
 };
@@ -105,12 +101,6 @@ const ServiceFeature = ({
       )}
       style={{ animationDelay: `${index * 75}ms` }}
     >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
-      )}
       <div className="mb-4 relative z-10 px-6 text-primary">
         {icon}
       </div>

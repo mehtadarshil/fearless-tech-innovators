@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 import Contact from "@/components/Contact";
 import Impact from "@/components/Impact";
 import Technologies from "@/components/Technologies";
-import Work from "./Work";
+import WorkScroll from "@/components/WorkScroll";
 
 const Index = () => {
   return (
@@ -16,8 +16,8 @@ const Index = () => {
       <div id="services">
         <Services />
       </div>
-      <div id="Work">
-        <Work />
+      <div id="work">
+        <WorkScroll />
       </div>
       <div id="technologies">
         <Technologies />

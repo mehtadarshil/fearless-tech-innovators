@@ -145,7 +145,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gradient-to-r from-primary/5 to-purple-500/5">
+      <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10 animate-fade-up">
             <h2 className="text-3xl font-bold mb-3">Visit Our Location</h2>
@@ -155,7 +155,6 @@ const Contact = () => {
           </div>
           <div className="glass-card p-3 rounded-lg shadow-lg animate-fade-up">
             <div className="relative h-[400px] rounded-xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 pointer-events-none z-10 rounded-xl" />
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59589.97195431568!2d71.27486367909123!3d21.337719974756534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39589de4c06b550d%3A0xceaf65c8dc2a5cce!2sSavarkundla%2C%20Gujarat%20364515!5e0!3m2!1sen!2sin!4v1718352561374!5m2!1sen!2sin" 
                 width="100%" 
